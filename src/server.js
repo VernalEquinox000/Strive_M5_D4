@@ -19,7 +19,7 @@ const {notFoundErrorHandler,
 
 const server = express() //2
 
-const port = process.env.PORT || 3001 //3
+const port = process.env.PORT || 3002 //3
 
 
 ///MIDDLEWARE
@@ -59,6 +59,6 @@ server.use(catchAllErrorHandler)
 console.log(listEndPoints(server))
 
 
-/* server.listen(port, () => { //4
+server.listen(port, () => { //4
     console.log("Server is running on port: ", port)
-}) */
+}) 

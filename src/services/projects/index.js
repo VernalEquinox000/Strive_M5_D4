@@ -65,7 +65,7 @@ router.get("/:id", (req, res, next) => {
     
  })
 
-router.post("/", [check("name").exists().withMessage("Name is a mandatory field")], (req, res) => {
+router.post("/", [check("name").exists().withMessage("Name is a mandatory field")], (req, res, next) => {
     try {
         const errors = validationResult(req)
 
@@ -102,7 +102,7 @@ router.post("/", [check("name").exists().withMessage("Name is a mandatory field"
     }
  })
 
-router.put("/:id", (req, res) => {
+router.put("/:id", (req, res, next) => {
     try {
         const projects = readFile("projects.json")
         const newProjects = projects.filter(project => project.ID !== req.params.id)
@@ -124,7 +124,7 @@ router.put("/:id", (req, res) => {
     })
 
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res, next) => {
     try {
         const projects = readFile("projects.json")
         const newProjects = projects.filter(project => project.ID !== req.params.id)
