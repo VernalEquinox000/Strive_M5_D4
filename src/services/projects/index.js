@@ -102,7 +102,7 @@ router.post(
         join(projectsPublicFolderPath, `${idFromRequest}.jpg`),
         req.file.buffer
         )
-        project.image=`http://localhost:3002/img/projects/${idFromRequest}.jpg`
+        project.image=`http://localhost:${process.env.PORT}/img/projects/${idFromRequest}.jpg`
         await writeDB(projectsFilePath, projectsDB)
         res.send({ image: project.image})
     

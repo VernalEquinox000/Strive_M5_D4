@@ -67,7 +67,7 @@ router.post(
         req.file.buffer
         )
         
-        student.image=`http://localhost:3000/img/students/${idFromRequest}.jpg`
+        student.image=`http://localhost:${process.env.PORT}/img/students/${idFromRequest}.jpg`
         await writeDB(studentsFilePath, studentsDB)
         res.send({ image: student.image})
     } catch (error) {
