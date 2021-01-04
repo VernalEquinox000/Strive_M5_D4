@@ -1,12 +1,11 @@
 const express = require("express") //1
 const cors = require("cors") //8
+const {join} = require("path")
 const listEndPoints =require("express-list-endpoints") //10
 const projectsRoutes = require("./services/projects") //5
 const studentsRoutes = require("./services/students")
 const errorRoutes = require("./services/problematicRoutes")
-//const { badRequestHandler } = require("./services/errorHandling")
-//const { notFoundHandler } = require("./services/errorHandling")
-//const { genericErrorHandler } = require("./services/errorHandling")
+const filesRoutes = require("./services/files")
 
 const {notFoundErrorHandler,
     unauthorizedErrorHandler,
@@ -14,12 +13,11 @@ const {notFoundErrorHandler,
     badRequestErrorHandler,
     catchAllErrorHandler, } = require("./errorHandling")
     
-
-
-
 const server = express() //2
 
 const port = process.env.PORT || 3002 //3
+
+const publicFolderPath = join(__dirname, "../public") //NEW
 
 
 ///MIDDLEWARE
@@ -36,12 +34,14 @@ const errorMiddleware = (err, req, res, next) => {
 server.use(cors()) //9
 server.use(express.json()) //7
 server.use(loggerMiddleware)
+server.use(express.static(publicFolderPath)) //new
 
 // ROUTES
 
 server.use("/projects", projectsRoutes) //6 grab
 server.use("/students", studentsRoutes)
 server.use("/problems", errorRoutes)
+server.use("/files", filesRoutes)
 
 // ERROR HANDLERS
 server.use(badRequestErrorHandler)

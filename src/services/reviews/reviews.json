@@ -1,7 +1,19 @@
 [
   {
-    "projectID": "",
-    "name": "this review",
+    "projectID": "jfdg30o33",
+    "name": "Paul M.",
+    "text": "very good",
+    "date": "12/02/2020"
+  },
+  {
+    "projectID": "jfdg30o33",
+    "name": "Ringo S.",
+    "text": "not very good one",
+    "date": "14/02/2020"
+  },
+  {
+    "projectID": "sktwin73kiij5k9h",
+    "name": "George H.",
     "text": "very good",
     "date": "12/02/2020"
   }
